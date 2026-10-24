@@ -44,7 +44,24 @@ const projects = [
     ],
     url: null, github: null, role: "Digital Artist", status: "Completed"
   },
-
+  {
+    id: "fruit-drawing",
+    name: "Graphic Design",
+    category: "Graphic Design",
+    type: "Academic",
+    description: "A detailed graphic design of a strawberry using vector and raster tools.",
+    overview: "A personal project focusing on lighting, shading, and texture to create a realistic digital drawing of a strawberry.",
+    problem: "Needed to practice advanced shading techniques in GIMP.",
+    solution: "Used multiple layers and blending modes to achieve a 3D effect.",
+    features: ["Realistic Shading", "Custom Brushes", "High-Res Output"],
+    year: 2026,
+    tech: ["GIMP", "Wacom Tablet"], 
+    image: "assets/FruitDrawing/Digital Drawing.png", 
+    gallery: [
+      "assets/FruitDrawing/Digital Drawing.png"
+    ],
+    url: null, github: null, role: "Illustrator", status: "Completed"
+  },
   {
     id: "typography-krav",
     name: "Typography Layout",
