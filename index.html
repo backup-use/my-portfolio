@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>John Rey Padilla | IT Student Portfolio</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon_io/site.webmanifest">
   <meta name="description" content="Portfolio of John Rey Padilla – 3rd Year IT Student at City College of Calamba. Explore my projects, skills, and experience." />
   <meta name="keywords" content="IT portfolio, student portfolio, web developer, graphic designer, networking, John Rey Padilla" />
   <meta name="author" content="John Rey Padilla" />
@@ -190,13 +194,38 @@
         </div>
 
         <div class="filter-bar">
-          <input type="text" id="searchInput" placeholder="Search projects..." aria-label="Search projects" />
+          <input type="text" id="searchInput" placeholder="Search by name, tech, year..." aria-label="Search projects" />
+          
+          <select id="yearFilter" aria-label="Filter by year">
+            <option value="all">All Years</option>
+            <option value="2026">2026</option>
+            <option value="2024">2024</option>
+          </select>
+
           <select id="categoryFilter" aria-label="Filter by category">
             <option value="all">All Categories</option>
             <option value="Web Development">Web Development</option>
             <option value="Graphic Design">Graphic Design</option>
             <option value="Brand Design">Brand Design</option>
             <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Typography">Typography</option>
+          </select>
+
+          <select id="typeFilter" aria-label="Filter by project type">
+            <option value="all">All Types</option>
+            <option value="Academic">Academic</option>
+            <option value="Client Project">Client Project</option>
+            <option value="Personal">Personal</option>
+          </select>
+
+          <select id="techFilter" aria-label="Filter by technology">
+            <option value="all">All Technologies</option>
+            <option value="PHP">PHP</option>
+            <option value="MySQL">MySQL</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Adobe Photoshop">Adobe Photoshop</option>
+            <option value="Adobe Illustrator">Adobe Illustrator</option>
+            <option value="GIMP">GIMP</option>
           </select>
         </div>
 

@@ -6,6 +6,7 @@ const projects = [
     id: "brand-design",
     name: "Brand Identity Design",
     category: "Brand Design",
+    type: "Academic", // Idinagdag para sa bagong filter
     description: "Logo variations, badges, and icons created for a cohesive brand identity.",
     overview: "A complete branding package including horizontal, vertical, badge, and icon logos. This ensures the brand looks consistent across different platforms and sizes.",
     problem: "The client needed a versatile logo that works on billboards, social media, and app icons.",
@@ -26,6 +27,7 @@ const projects = [
     id: "digital-marketing",
     name: "Digital Marketing Assets",
     category: "Digital Marketing",
+    type: "Personal", 
     description: "Social media graphics, web banners, and newsletter headers for marketing campaigns.",
     overview: "A collection of digital marketing materials designed to capture attention and drive engagement across web and social platforms.",
     problem: "The marketing team needed high-quality, eye-catching visuals for a new campaign.",
@@ -46,6 +48,7 @@ const projects = [
     id: "fruit-drawing",
     name: "Digital Illustration",
     category: "Digital Illustration",
+    type: "Academic",
     description: "A detailed digital illustration of a strawberry using vector and raster tools.",
     overview: "A personal project focusing on lighting, shading, and texture to create a realistic digital drawing of a strawberry.",
     problem: "Needed to practice advanced shading techniques in GIMP.",
@@ -63,6 +66,7 @@ const projects = [
     id: "typography-krav",
     name: "Typography Layout",
     category: "Typography",
+    type: "Personal",
     description: "Custom typography and layout design for KRAV Cafe.",
     overview: "Designed a visually striking poster focusing on typography and layout for a coffee shop's promotional material.",
     problem: "The cafe needed a modern, typographic design that stands out.",
@@ -80,6 +84,7 @@ const projects = [
     id: "teacher-scheduling-system",
     name: "Automated Teacher Scheduling System",
     category: "Web Development",
+    type: "Client Project",
     description: "A web-based scheduling system for Makiling Integrated School to automate teacher timetables.",
     overview: "Developed for our Software Engineering 2 (SE2) subject, this system solves the manual scheduling problem of the school by automatically assigning teachers to subjects and sections without conflicts.",
     problem: "The school administrators spent days manually plotting schedules, which often resulted in overlapping classes and teacher fatigue.",
@@ -136,7 +141,7 @@ function initTheme() {
 }
 
 /* =========================================================
-   MOBILE SIDE PANEL MENU
+   MOBILE SIDE PANEL MENU (Fixed Glitch)
    ========================================================= */
 function initMobileMenu() {
   const hamburger = document.getElementById("hamburger");
@@ -163,6 +168,7 @@ function initMobileMenu() {
     });
   });
 
+  // ITO YUNG FIX PARA HINDI MAG-GLITCH KAPAG NAG-RESIZE
   window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
       navLinks.classList.remove("active");
@@ -173,12 +179,10 @@ function initMobileMenu() {
 }
 
 /* =========================================================
-   PROJECT RENDERING & FILTERING
+   PROJECT RENDERING & FILTERING (5 FILTERS)
    ========================================================= */
 const projectsGrid = document.getElementById("projectsGrid");
 const noResults = document.getElementById("noResults");
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
 
 function renderProjects(list) {
   projectsGrid.innerHTML = "";
@@ -224,27 +228,42 @@ function renderProjects(list) {
 }
 
 function initProjectFilters() {
+  const searchInput = document.getElementById("searchInput");
+  const yearFilter = document.getElementById("yearFilter");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const typeFilter = document.getElementById("typeFilter");
+  const techFilter = document.getElementById("techFilter");
+
   const filter = () => {
     const query = searchInput.value.toLowerCase().trim();
+    const year = yearFilter.value;
     const category = categoryFilter.value;
+    const type = typeFilter.value;
+    const tech = techFilter.value;
 
     const filtered = projects.filter((p) => {
       const matchesSearch =
         p.name.toLowerCase().includes(query) ||
         p.description.toLowerCase().includes(query) ||
-        p.tech.some((t) => t.toLowerCase().includes(query)) ||
-        p.year.toString().includes(query) ||
-        p.category.toLowerCase().includes(query);
+        p.tech.some((t) => t.toLowerCase().includes(query));
 
+      const matchesYear = year === "all" || p.year.toString() === year;
       const matchesCategory = category === "all" || p.category === category;
-      return matchesSearch && matchesCategory;
+      const matchesType = type === "all" || p.type === type;
+      const matchesTech = tech === "all" || p.tech.includes(tech);
+
+      return matchesSearch && matchesYear && matchesCategory && matchesType && matchesTech;
     });
 
     renderProjects(filtered);
   };
 
+  // Event listeners para sa lahat ng filters
   searchInput.addEventListener("input", filter);
+  yearFilter.addEventListener("change", filter);
   categoryFilter.addEventListener("change", filter);
+  typeFilter.addEventListener("change", filter);
+  techFilter.addEventListener("change", filter);
 }
 
 /* =========================================================
