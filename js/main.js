@@ -47,7 +47,7 @@ const projects = [
   {
     id: "fruit-drawing",
     name: "Graphic Design",
-    category: "Grahic Design",
+    category: "Graphic Design",
     type: "Academic",
     description: "A detailed graphic design of a strawberry using vector and raster tools.",
     overview: "A personal project focusing on lighting, shading, and texture to create a realistic digital drawing of a strawberry.",
