@@ -145,11 +145,8 @@ function initMobileMenu() {
 
   hamburger.addEventListener("click", () => {
     const isOpen = navLinks.classList.toggle("active");
-    
-    // Change icon between bars and X
     hamburger.querySelector("i").className = isOpen ? "fas fa-times" : "fas fa-bars";
     
-    // Prevent background scrolling when menu is open
     if (isOpen) {
       body.style.overflow = "hidden";
     } else {
@@ -157,13 +154,21 @@ function initMobileMenu() {
     }
   });
 
-  // Close menu when a link is clicked
+  // Isara ang menu kapag pumindot ng link
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("active");
       hamburger.querySelector("i").className = "fas fa-bars";
       body.style.overflow = "";
     });
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      navLinks.classList.remove("active");
+      hamburger.querySelector("i").className = "fas fa-bars";
+      body.style.overflow = "";
+    }
   });
 }
 

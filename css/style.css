@@ -325,13 +325,13 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   /* MOBILE SIDE PANEL NAVIGATION */
   .nav-links {
     position: fixed;
-    top: 0; 
-    right: -100%; /* Nakatago sa kanan initially */
+    top: 70px; 
+    right: -100%; 
     width: 70%; 
-    height: 100vh;
+    height: calc(100vh - 70px); 
     background: var(--surface);
     flex-direction: column;
-    padding: 6rem 2rem 2rem;
+    padding: 2rem;
     gap: 1.5rem;
     box-shadow: -10px 0 30px rgba(0,0,0,0.3);
     transition: right 0.3s ease-in-out;
@@ -341,7 +341,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   }
   
   .nav-links.active { 
-    right: 0; /* Slide in effect */
+    right: 0; 
   }
   
   .nav-links a { font-size: 1.1rem; }
@@ -349,7 +349,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   .hamburger { 
     display: block; 
     position: relative; 
-    z-index: 1001; /* Para nasa taas ng panel */
+    z-index: 1001; 
   }
   
   .timeline { padding-left: 1rem; }
