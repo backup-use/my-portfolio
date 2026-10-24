@@ -44,7 +44,9 @@
   --tag-text: #bfdbfe;
 }
 
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth; 
+}
 
 body {
   font-family: 'Lato', sans-serif;
@@ -53,6 +55,11 @@ body {
   line-height: 1.7;
   transition: var(--transition);
   overflow-x: hidden; /* Pigilan ang buong website na mag-scroll pakanan */
+}
+
+/* 👇 DAGDAG ITO PARA HINDI MATAKPAN NG NAVBAR YUNG TAAS NG WEBSITE 👇 */
+main {
+  padding-top: 75px; 
 }
 
 h1, h2, h3, .logo {
@@ -82,12 +89,19 @@ a:hover { color: var(--accent); }
 .btn-outline:hover { background: var(--primary); color: var(--bg); }
 
 /* ============================================
-   NAVBAR & LOGO
+   NAVBAR & LOGO (FIXED POSITION)
    ============================================ */
 .navbar {
-  position: sticky; top: 0; z-index: 1000;
-  background: var(--nav-bg); backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border); padding: 1rem 0;
+  position: fixed; /* 👈 GINAWANG FIXED PARA SUMUSUNOD KAHIT MAG-SCROLL */
+  top: 0; 
+  left: 0;
+  z-index: 1000;
+  background: var(--nav-bg); 
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border); 
+  padding: 1rem 0;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Konting shadow para kitang nakalutang */
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
 
@@ -136,6 +150,16 @@ section { padding: 5rem 0; }
 }
 
 /* ============================================
+   HERO BUTTONS (Inayos ang spacing)
+   ============================================ */
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem; 
+  flex-wrap: wrap;
+  margin-top: 2.5rem; 
+}
+
+/* ============================================
    HERO IMAGE (Professional Portrait Setup)
    ============================================ */
 .hero-image {
@@ -149,7 +173,6 @@ section { padding: 5rem 0; }
   margin-top: 1rem;
 }
 
-/* 1. Ang Eleganteng Frame sa Likod */
 .hero-image::after {
   content: '';
   position: absolute;
@@ -165,7 +188,6 @@ section { padding: 5rem 0; }
   z-index: 0;
 }
 
-/* 2. Ang Spotlight */
 .hero-image::before {
   content: '';
   position: absolute;
@@ -181,7 +203,6 @@ section { padding: 5rem 0; }
   transform: translateX(-50%);
 }
 
-/* 3. Ang Image Mo */
 .hero-image img {
   width: 100%;
   height: auto;
@@ -216,7 +237,14 @@ section { padding: 5rem 0; }
 .filter-bar input, .filter-bar select { padding: 0.8rem 1.2rem; border-radius: 4px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); font-size: 0.95rem; min-width: 200px; font-family: inherit; }
 .filter-bar input:focus, .filter-bar select:focus { outline: 2px solid var(--accent); border-color: transparent; }
 
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem; }
+.projects-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+  gap: 2.5rem; 
+  width: 100%;       
+  overflow: hidden;  
+}
+
 .project-card { background: var(--surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--card-shadow); transition: transform 0.3s ease; display: flex; flex-direction: column; }
 .project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15); }
 .project-image { height: 220px; background: var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -292,7 +320,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   align-items: center; 
   justify-content: center; 
   padding: 1rem; 
-  overflow-x: hidden; /* Pigilan ang horizontal scroll */
+  overflow-x: hidden; 
 }
 .modal[hidden] { display: none; }
 
@@ -300,10 +328,10 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   background: var(--surface); 
   border-radius: 12px; 
   max-width: 800px; 
-  width: 100%; /* Eksaktong 100% lang para hindi lumabas */
+  width: 100%; 
   max-height: 90vh; 
   overflow-y: auto; 
-  overflow-x: hidden; /* Pigilan ang images na lumabas sa gilid */
+  overflow-x: hidden; 
   padding: 2.5rem; 
   position: relative; 
   border: 1px solid var(--border); 
@@ -321,22 +349,21 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .modal-section ul { padding-left: 1.5rem; margin-top: 0.5rem; }
 
 /* ============================================
-   RESPONSIVE (Mobile Side Panel)
+   RESPONSIVE (Mobile Side Panel & Modal)
    ============================================ */
 @media (max-width: 900px) {
   .hero-grid { flex-direction: column-reverse; text-align: center; }
-  .hero-buttons { justify-content: center; }
+  .hero-buttons { 
+    flex-direction: column; 
+    width: 100%;
+    gap: 1rem;
+  }
+  .hero-buttons .btn {
+    width: 100%; 
+  }
   
-  /* Adjusted Mobile Hero Image */
-  .hero-image { 
-    width: 300px; 
-    height: 380px; 
-    margin: 0 auto;
-  }
-  .hero-image::after {
-    width: 260px;
-    height: 320px;
-  }
+  .hero-image { width: 300px; height: 380px; margin: 0 auto; }
+  .hero-image::after { width: 260px; height: 320px; }
 
   .hero-content h1 { font-size: 2.5rem; }
   .about-grid { grid-template-columns: 1fr; }
@@ -351,10 +378,10 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   /* MOBILE SIDE PANEL NAVIGATION */
   .nav-links {
     position: fixed;
-    top: 70px; 
+    top: 73px; /* 👈 INI-ADJUST PARA PANTay SA ILALIM NG FIXED NAVBAR */
     right: -100%; 
     width: 70%; 
-    height: calc(100vh - 70px); 
+    height: calc(100vh - 73px); /* 👈 SINIGURADONG HINDI LALAMPAS SA BABA */
     background: var(--surface);
     flex-direction: column;
     padding: 2rem;
@@ -364,19 +391,12 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     z-index: 999;
     border-left: 1px solid var(--border);
     align-items: flex-start;
+    overflow-y: auto; /* Para pwedeng i-scroll kung masyadong mahaba ang menu */
   }
   
-  .nav-links.active { 
-    right: 0; 
-  }
-  
+  .nav-links.active { right: 0; }
   .nav-links a { font-size: 1.1rem; }
-  
-  .hamburger { 
-    display: block; 
-    position: relative; 
-    z-index: 1001; 
-  }
+  .hamburger { display: block; position: relative; z-index: 1001; }
   
   .timeline { padding-left: 1rem; }
   .timeline-item { padding-left: 1rem; }
@@ -384,27 +404,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
   /* MODAL MOBILE APP-LIKE FIX */
   .modal { 
-    padding: 0; /* Aalisin ang space sa gilid */
-    align-items: flex-end; /* Pop-up from bottom effect */
+    padding: 0; 
+    align-items: flex-end; 
   }
   
   .modal-content { 
     max-height: 95vh; 
-    border-radius: 20px 20px 0 0; /* Bilog sa taas, flat sa baba */
-    padding: 1.5rem; /* Bawasan ang padding para sa maliit na screen */
+    border-radius: 20px 20px 0 0; 
+    padding: 1.5rem; 
     border: none;
   }
 
-  .modal-close {
-    top: 0.8rem;
-    right: 1rem;
-  }
-
-  .modal-header h2 {
-    font-size: 1.3rem; /* Paliitin ang title */
-  }
-
-  .modal-meta-grid { 
-    grid-template-columns: 1fr; 
-  }
+  .modal-close { top: 0.8rem; right: 1rem; }
+  .modal-header h2 { font-size: 1.3rem; }
+  .modal-meta-grid { grid-template-columns: 1fr; }
 }

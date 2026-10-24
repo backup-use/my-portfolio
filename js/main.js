@@ -6,7 +6,7 @@ const projects = [
     id: "brand-design",
     name: "Brand Identity Design",
     category: "Brand Design",
-    type: "Academic", // Idinagdag para sa bagong filter
+    type: "Academic", 
     description: "Logo variations, badges, and icons created for a cohesive brand identity.",
     overview: "A complete branding package including horizontal, vertical, badge, and icon logos. This ensures the brand looks consistent across different platforms and sizes.",
     problem: "The client needed a versatile logo that works on billboards, social media, and app icons.",
@@ -141,7 +141,7 @@ function initTheme() {
 }
 
 /* =========================================================
-   MOBILE SIDE PANEL MENU (Fixed Glitch)
+   MOBILE SIDE PANEL MENU
    ========================================================= */
 function initMobileMenu() {
   const hamburger = document.getElementById("hamburger");
@@ -159,7 +159,6 @@ function initMobileMenu() {
     }
   });
 
-  // Isara ang menu kapag pumindot ng link
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("active");
@@ -168,7 +167,6 @@ function initMobileMenu() {
     });
   });
 
-  // ITO YUNG FIX PARA HINDI MAG-GLITCH KAPAG NAG-RESIZE
   window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
       navLinks.classList.remove("active");
@@ -258,7 +256,6 @@ function initProjectFilters() {
     renderProjects(filtered);
   };
 
-  // Event listeners para sa lahat ng filters
   searchInput.addEventListener("input", filter);
   yearFilter.addEventListener("change", filter);
   categoryFilter.addEventListener("change", filter);
@@ -345,12 +342,19 @@ function initProjectRouting() {
     `;
 
     modal.hidden = false;
+    
+    // 👇 ANG FIX PARA HINDI MA-DRAG SA MOBILE
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden"; 
   }
 
   function closeModal() {
     modal.hidden = true;
+    
+    // 👇 IBALIK SA NORMAL PAGKASARA
     document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+    
     if (location.hash.startsWith("#/projects/")) {
       history.replaceState(null, "", "#projects");
     }
