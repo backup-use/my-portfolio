@@ -46,10 +46,10 @@ const projects = [
   },
   {
     id: "fruit-drawing",
-    name: "Digital Illustration",
-    category: "Digital Illustration",
+    name: "Graphic Design",
+    category: "Grahic Design",
     type: "Academic",
-    description: "A detailed digital illustration of a strawberry using vector and raster tools.",
+    description: "A detailed graphic design of a strawberry using vector and raster tools.",
     overview: "A personal project focusing on lighting, shading, and texture to create a realistic digital drawing of a strawberry.",
     problem: "Needed to practice advanced shading techniques in GIMP.",
     solution: "Used multiple layers and blending modes to achieve a 3D effect.",
