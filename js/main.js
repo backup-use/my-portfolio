@@ -98,6 +98,9 @@ const projects = [
     year: 2026,
     tech: ["PHP", "MySQL", "JavaScript", "Bootstrap"], 
     image: "assets/Web Development/Makiling Integrated School Login Portal.png", 
+    gallery: [
+      "assets/Web Development/Makiling Integrated School Login Portal.png"
+    ],
     url: null, github: null, role: "Full-Stack Developer", status: "In Progress"
   }
 ];
